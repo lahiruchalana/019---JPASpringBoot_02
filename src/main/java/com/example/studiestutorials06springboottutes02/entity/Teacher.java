@@ -21,8 +21,8 @@ public class Teacher {
     private Integer teacherAge;
 
     @ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+//            cascade = CascadeType.ALL,  // allows to teacher instances to create a teacher without saved courses (if there is not this Cascade type you can use available instance courseId)
+            fetch = FetchType.EAGER
     )
     @JoinColumn(
             name = "course_id",
@@ -31,6 +31,14 @@ public class Teacher {
     private Course course;
 
     public Teacher() {
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public Teacher(Long teacherId, String teacherName, Integer teacherAge) {
