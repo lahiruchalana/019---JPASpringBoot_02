@@ -35,6 +35,15 @@ public class Student {
     )
     private List<Course> courses;
 
+    // getters and setters should be there for courses
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
     public Student() {
     }
 
