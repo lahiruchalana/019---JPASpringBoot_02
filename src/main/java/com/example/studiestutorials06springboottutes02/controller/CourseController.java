@@ -46,4 +46,13 @@ public class CourseController {
     ) {
         return new ResponseEntity<>(courseService.getCoursesWithPagination(pageNumber, pageSize), HttpStatus.OK);
     }
+
+    @GetMapping(path = "{pageNumber}/{pageSize}/{property}")
+    public ResponseEntity<Page<Course>> getCoursesWithPaginationAndSorting(
+            @PathVariable("pageNumber") Integer pageNumber,
+            @PathVariable("pageSize") Integer pageSize,
+            @PathVariable("property") String property
+    ) {
+        return new ResponseEntity<>(courseService.getCoursesWithPaginationAndSorting(pageNumber, pageSize, property), HttpStatus.OK);
+    }
 }

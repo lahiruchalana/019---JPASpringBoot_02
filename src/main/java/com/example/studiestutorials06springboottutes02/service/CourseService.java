@@ -33,4 +33,8 @@ public class CourseService {
     public Page<Course> getCoursesWithPagination(Integer pageNumber, Integer pageSize) {        // returning the page of courses
         return courseRepository.findAll(PageRequest.of(pageNumber, pageSize));
     }
+
+    public Page<Course> getCoursesWithPaginationAndSorting(Integer pageNumber, Integer pageSize, String property) {     // sorting by a property and implements pagination
+        return courseRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.ASC, property)));
+    }
 }
