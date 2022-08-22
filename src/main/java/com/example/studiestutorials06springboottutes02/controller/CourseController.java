@@ -30,4 +30,11 @@ public class CourseController {
     public ResponseEntity<List<Course>> getAllCourses() {
         return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
+
+    @GetMapping(path = "{property}")
+    public ResponseEntity<List<Course>> getCoursesWithSorting(
+            @PathVariable("property") String property
+    ) {
+        return new ResponseEntity<>(courseService.getCoursesWithSorting(property), HttpStatus.OK);
+    }
 }

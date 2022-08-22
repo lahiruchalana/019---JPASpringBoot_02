@@ -2,6 +2,7 @@ package com.example.studiestutorials06springboottutes02.service;
 
 import com.example.studiestutorials06springboottutes02.entity.Course;
 import com.example.studiestutorials06springboottutes02.repository.CourseRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,5 +22,9 @@ public class CourseService {
 
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
+    }
+
+    public List<Course> getCoursesWithSorting(String property) {        // sorting with the property and ascending order
+        return courseRepository.findAll(Sort.by(Sort.Direction.ASC, property));
     }
 }
