@@ -22,10 +22,6 @@ public class Course {
     private String courseName;
     private Integer credits;
 
-
-
-
-
     public Course() {
     }
 
