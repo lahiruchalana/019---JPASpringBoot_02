@@ -2,6 +2,7 @@ package com.example.studiestutorials06springboottutes02.controller;
 
 import com.example.studiestutorials06springboottutes02.entity.Course;
 import com.example.studiestutorials06springboottutes02.service.CourseService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,10 +32,18 @@ public class CourseController {
         return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "{property}")
+    @GetMapping(path = "{property}")        // sorting by property
     public ResponseEntity<List<Course>> getCoursesWithSorting(
             @PathVariable("property") String property
     ) {
         return new ResponseEntity<>(courseService.getCoursesWithSorting(property), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "{pageNumber}/{pageSize}")       // pagination
+    public ResponseEntity<Page<Course>> getCoursesWithPagination(
+            @PathVariable("pageNumber") Integer pageNumber,
+            @PathVariable("pageSize") Integer pageSize
+    ) {
+        return new ResponseEntity<>(courseService.getCoursesWithPagination(pageNumber, pageSize), HttpStatus.OK);
     }
 }
